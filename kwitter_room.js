@@ -14,9 +14,15 @@ var firebaseConfig = {
     
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
        Room_names = childKey;
+       user_name = localStorage.getItem("username");
+       document.getElementById("user_name").innerHTML = "welcome, " + user_name + "!";
       //Start code
 
       //End code
+
+console.log("room name" + Room_names);
+row = "<div class = 'room_name' id = "+ Room_names + "onclick = 'redirecttoroomname(this.id)'>" + Room_names + "</div><hr>"
+document.getElementById("output").innerHTML = row;
       });});}
 getData();
 
